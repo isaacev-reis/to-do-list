@@ -11,7 +11,7 @@ public class TarefaView {
         System.out.println("====================");
     }
 
-    public void viewMostrarMensagem(String mensagem) {
+    public void mostrarMensagem(String mensagem) {
         System.out.println(mensagem);
     }
 
@@ -19,48 +19,53 @@ public class TarefaView {
         System.out.println("Digite o que deseja fazer: ");
     }
 
-    public void viewAdicionarTarefa() {
+    public void adicionarTarefa() {
         System.out.println("Digite a tarefa que deseja adicionar: ");
     }
 
-    public void viewListarTarefas() {
+    public void listarTarefas() {
         System.out.println("Aqui estão todas as tarefas: ");
     }
 
-    public void viewConcluirTarefa() {
+    public void concluirTarefa() {
         System.out.println("Marque a tarefa concluída: ");
     }
 
-    public void viewRemoverTarefa() {
+    public void removerTarefa() {
         System.out.println("Escolha a tarefa que deseja remover: ");
     }
 
-    public void viewSair() {
+    public void sair() {
         System.out.println("Encerrando programa");
         System.out.println(". . .");
     }
 
-    public void viewConcluida() {
+    public void concluida() {
         System.out.println("CONCLUÌDA!");
+        System.out.println(" ");
     }
 
-    public void viewNaoConcluida() {
+    public void naoConcluida() {
         System.out.println("NÃO CONCLUÍDA!");
+        System.out.println(" ");
     }
 
-    public void viewErro() {
+    public void erro() {
         System.out.println("Opção inválida!");
     }
 
     public void sucessoAdicionar() {
         System.out.println("Tarefa adicionada com sucesso!");
+        System.out.println(" ");
     }
 
     public void sucessoRemover() {
         System.out.println("Tarefa removida com sucesso!");
+        System.out.println(" ");
     }
 
     public void sucessoConcluir() {
         System.out.println("Tarefa concluída com sucesso!");
+        System.out.println(" ");
     }
 }

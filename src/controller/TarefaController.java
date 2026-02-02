@@ -27,11 +27,13 @@ public class TarefaController {
                 concluirTarefa();
             } else if (opcao == 4) {
                 removerTarefa();
+            } else {
+                tarefaView.erro();
             }
             tarefaView.mostrarMenu();
             receberOpcao();
         }
-        tarefaView.viewSair();
+        tarefaView.sair();
     }
 
     public void receberOpcao() {
@@ -41,7 +43,7 @@ public class TarefaController {
     }
 
     public void adicionarTarefa() {
-        tarefaView.viewAdicionarTarefa();
+        tarefaView.adicionarTarefa();
         String descricao = scannerDeTexto.nextLine();
         Tarefa tarefa = new Tarefa(descricao);
         if (!listaDeTarefas.isEmpty()){
@@ -54,19 +56,19 @@ public class TarefaController {
     }
 
     public void listarTarefas() {
-        tarefaView.viewListarTarefas();
+        tarefaView.listarTarefas();
         for (int i = 0; i < listaDeTarefas.size(); i++) {
-            tarefaView.viewMostrarMensagem(Integer.toString(listaDeTarefas.get(i).getId()) + " - " + listaDeTarefas.get(i).getDescricao());
+            tarefaView.mostrarMensagem(Integer.toString(listaDeTarefas.get(i).getId()) + " - " + listaDeTarefas.get(i).getDescricao());
             if (listaDeTarefas.get(i).isConcluida()) {
-                tarefaView.viewConcluida();
+                tarefaView.concluida();
             } else {
-                tarefaView.viewNaoConcluida();
+                tarefaView.naoConcluida();
             }
         }
     }
 
     public void concluirTarefa() {
-        tarefaView.viewConcluirTarefa();
+        tarefaView.concluirTarefa();
         int tarefaID = scannerDeInteiro.nextInt();
         if (tarefaID - 1 < listaDeTarefas.size()) {
             listaDeTarefas.get(tarefaID - 1).setConcluida(true);
@@ -75,7 +77,7 @@ public class TarefaController {
     }
 
     public void removerTarefa() {
-        tarefaView.viewRemoverTarefa();
+        tarefaView.removerTarefa();
         int tarefaID = scannerDeInteiro.nextInt();
         if (tarefaID - 1 < listaDeTarefas.size()) {
             listaDeTarefas.remove(tarefaID - 1);
