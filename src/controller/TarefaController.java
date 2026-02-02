@@ -9,21 +9,40 @@ import java.util.Scanner;
 
 public class TarefaController {
     TarefaView tarefaView = new TarefaView();
-    Scanner scanner = new Scanner(System.in);
+    Scanner scannerDeInteiro = new Scanner(System.in);
+    Scanner scannerDeTexto = new Scanner(System.in);
     List<Tarefa> listaDeTarefas = new ArrayList<>();
     int opcao;
 
     public void iniciar() {
-        // ainda falta
+        tarefaView.mostrarMenu();
+        receberOpcao();
+
+        while (opcao != 5) {
+            if (opcao == 1) {
+                adicionarTarefa();
+            } else if (opcao == 2) {
+                listarTarefas();
+            } else if (opcao == 3) {
+                concluirTarefa();
+            } else if (opcao == 4) {
+                removerTarefa();
+            }
+            tarefaView.mostrarMenu();
+            receberOpcao();
+        }
+        tarefaView.viewSair();
     }
 
     public void receberOpcao() {
+        opcao = 0;
         tarefaView.pedirOpcao();
-        opcao = scanner.nextInt();
+        opcao = scannerDeInteiro.nextInt();
     }
 
     public void adicionarTarefa() {
-        String descricao = scanner.nextLine();
+        tarefaView.viewAdicionarTarefa();
+        String descricao = scannerDeTexto.nextLine();
         Tarefa tarefa = new Tarefa(descricao);
         if (!listaDeTarefas.isEmpty()){
             tarefa.setId(listaDeTarefas.get(listaDeTarefas.size() - 1).getId() + 1);
@@ -31,9 +50,11 @@ public class TarefaController {
             tarefa.setId(1);
         }
         listaDeTarefas.add(tarefa);
+        tarefaView.sucessoAdicionar();
     }
 
     public void listarTarefas() {
+        tarefaView.viewListarTarefas();
         for (int i = 0; i < listaDeTarefas.size(); i++) {
             tarefaView.viewMostrarMensagem(Integer.toString(listaDeTarefas.get(i).getId()) + " - " + listaDeTarefas.get(i).getDescricao());
             if (listaDeTarefas.get(i).isConcluida()) {
@@ -45,16 +66,20 @@ public class TarefaController {
     }
 
     public void concluirTarefa() {
-        int tarefaID = scanner.nextInt();
+        tarefaView.viewConcluirTarefa();
+        int tarefaID = scannerDeInteiro.nextInt();
         if (tarefaID - 1 < listaDeTarefas.size()) {
             listaDeTarefas.get(tarefaID - 1).setConcluida(true);
         }
+        tarefaView.sucessoConcluir();
     }
 
     public void removerTarefa() {
-        int tarefaID = scanner.nextInt();
+        tarefaView.viewRemoverTarefa();
+        int tarefaID = scannerDeInteiro.nextInt();
         if (tarefaID - 1 < listaDeTarefas.size()) {
             listaDeTarefas.remove(tarefaID - 1);
         }
+        tarefaView.sucessoRemover();
     }
 }
