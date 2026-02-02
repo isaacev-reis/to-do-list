@@ -40,16 +40,6 @@ public class TarefaView {
         System.out.println(". . .");
     }
 
-    public void concluida() {
-        System.out.println("CONCLUÌDA!");
-        System.out.println(" ");
-    }
-
-    public void naoConcluida() {
-        System.out.println("NÃO CONCLUÍDA!");
-        System.out.println(" ");
-    }
-
     public void erro() {
         System.out.println("Opção inválida!");
     }

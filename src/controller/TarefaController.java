@@ -57,14 +57,21 @@ public class TarefaController {
 
     public void listarTarefas() {
         tarefaView.listarTarefas();
+
+        String marcacaoDeConclusao;
+
         for (int i = 0; i < listaDeTarefas.size(); i++) {
-            tarefaView.mostrarMensagem(Integer.toString(listaDeTarefas.get(i).getId()) + " - " + listaDeTarefas.get(i).getDescricao());
             if (listaDeTarefas.get(i).isConcluida()) {
-                tarefaView.concluida();
+                marcacaoDeConclusao = "[X] ";
             } else {
-                tarefaView.naoConcluida();
+                marcacaoDeConclusao = "[ ] ";
             }
+            tarefaView.mostrarMensagem(
+                    marcacaoDeConclusao +
+                    Integer.toString(listaDeTarefas.get(i).getId()) +
+                    " - " + listaDeTarefas.get(i).getDescricao());
         }
+        tarefaView.mostrarMensagem(" ");
     }
 
     public void concluirTarefa() {
